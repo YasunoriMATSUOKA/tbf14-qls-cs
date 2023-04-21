@@ -1,4 +1,20 @@
-# Re:VIEW Template
+# 技術書典14 「今日から現場で使える速習SymbolブロックチェーンC#版」
+
+技術書典14で頒布する「今日から現場で使える速習SymbolブロックチェーンC#版」の原稿管理用リポジトリです。こちらのリポジトリで技術的な検証ができ次第、後述するNEMTUSのOrganizationでのリポジトリの管理に移行する可能性があります。
+
+TechBoosterのRe:VIEW用の書籍テンプレート[https://github.com/TechBooster/ReVIEW-Template](https://github.com/TechBooster/ReVIEW-Template)を利用しています。Re:VIEWバージョン5.7に対応します。
+
+## 「速習Symbolブロックチェーン」とは
+
+Symbolブロックチェーンのシンプルなブロックエクスプローラー及び関連サービスをコミュニティメンバーとして公開してくださっているXEMBook様([https://twitter.com/xembook](https://twitter.com/xembook))が作成・公開してくださっている、Symbolブロックチェーンの学習用コンテンツ「速習Symbol」[https://github.com/xembook/quick_learning_symbol](https://github.com/xembook/quick_learning_symbol)がオリジナルです。JavaScript向けのコンテンツです。
+
+## 「速習SymbolブロックチェーンC#版」とは
+
+オリジナルのJavaScript版の速習Symbolをベースに、Symbolブロックチェーンを活用したキャラクター育成型の2D見下ろしアクションゲーム「THE TOWER」([https://symvolution.com/thetower/](https://symvolution.com/thetower/))やC#でSymbolブロックチェーンを活用するためのSDK([https://github.com/0x070696E65/symbol_cs_dual_sdk](https://github.com/0x070696E65/symbol_cs_dual_sdk))等をコミュニティメンバーとして公開してくださっているtoshi様([https://twitter.com/toshiya_ma](https://twitter.com/toshiya_ma))がJavaScript版のオリジナルの速習SymbolをC#版にコード改変して作成・公開してくださったオリジナルです。
+
+技術書典14にNPO法人NEM技術普及推進会NEMTUSが出展できることになったことをきっかけに、NEMTUS内部メンバーからXEMBook様及びtoshi様に書籍化及び技術書典14での販売を相談させて頂き、許可を頂いています。
+
+## Re:VIEW Template
 
 このリポジトリはRe:VIEW用の書籍テンプレートです。Re:VIEWバージョン5.7に対応します。
 メンテナンスはTechBoosterが行っています。
