@@ -10,7 +10,7 @@ Symbolブロックチェーンのシンプルなブロックエクスプロー�
 
 ## 「速習SymbolブロックチェーンC#版」とは
 
-オリジナルのJavaScript版の速習Symbolをベースに、Symbolブロックチェーンを活用したキャラクター育成型の2D見下ろしアクションゲーム「THE TOWER」([https://symvolution.com/thetower/](https://symvolution.com/thetower/))やC#でSymbolブロックチェーンを活用するためのSDK([https://github.com/0x070696E65/symbol_cs_dual_sdk](https://github.com/0x070696E65/symbol_cs_dual_sdk))等をコミュニティメンバーとして公開してくださっているtoshi様([https://twitter.com/toshiya_ma](https://twitter.com/toshiya_ma))がJavaScript版のオリジナルの速習SymbolをC#版にコード改変して作成・公開してくださったオリジナルです。
+オリジナルのJavaScript版の速習Symbolをベースに、Symbolブロックチェーンを活用したキャラクター育成型の2D見下ろしアクションゲーム「THE TOWER」([https://symvolution.com/thetower/](https://symvolution.com/thetower/))やC#でSymbolブロックチェーンを活用するためのSDK([https://github.com/0x070696E65/symbol_cs_dual_sdk](https://github.com/0x070696E65/symbol_cs_dual_sdk))等をコミュニティメンバーとして公開してくださっているtoshi様([https://twitter.com/toshiya_ma](https://twitter.com/toshiya_ma))がJavaScript版のオリジナルの速習SymbolをC#版にコード改変して作成・公開してくださったSymbolブロックチェーンの学習用コンテンツです。
 
 技術書典14にNPO法人NEM技術普及推進会NEMTUSが出展できることになったことをきっかけに、NEMTUS内部メンバーからXEMBook様及びtoshi様に書籍化及び技術書典14での販売を相談させて頂き、許可を頂いています。
 
