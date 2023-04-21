@@ -1,7 +1,7 @@
-# 4.トランザクション
+# トランザクション
 ブロックチェーン上のデータ更新はトランザクションをネットワークにアナウンスすることによって行います。
 
-## 4.1 トランザクションのライフサイクル
+## トランザクションのライフサイクル
 
 トランザクションを作成してから、改ざんが困難なデータとなるまでを順に説明します。
 
@@ -27,7 +27,7 @@
 ブロックは約30秒ごとに生成され、高い手数料を支払ったトランザクションから優先に取り込まれ、ブロック単位で他のノードと同期します。
 同期に失敗するとロールバックして、ネットワークが全体で合意が取れるまでこの作業を繰り返します。
 
-## 4.2 トランザクション作成
+## トランザクション作成
 
 まずは最も基本的な転送トランザクションを作成してみます。
 
@@ -124,7 +124,7 @@ var tx = new TransferTransactionV1
 
 本書では以後、feeMultiprier = 100として指定する方法で統一して説明します。
 
-## 4.3 署名とアナウンス
+## 署名とアナウンス
 
 作成したトランザクションを秘密鍵で署名して、任意のノードを通じてアナウンスします。
 
@@ -141,10 +141,11 @@ Console.WriteLine($"Signature: {signature}");
 トランザクションの署名にはgenerationHash値が必要ですがfacade作成時の引数であるネットワーク設定にハードコーディングされています。
 
 generationHash
+
 - テストネット
-    - 7FCCD304802016BEBBCD342A332F91FF1F3BB5E902988B352697BE245F48E836
+  - 7FCCD304802016BEBBCD342A332F91FF1F3BB5E902988B352697BE24 5F48E836
 - メインネット
-    - 57F7DA205008026C776CB6AED843393F04CD458E0AA2D9F1D5F31A402072B2D6
+  - 57F7DA205008026C776CB6AED843393F04CD458E0AA2D9F1D5F31A40 2072B2D6
 
 generationHash値はそのブロックチェーンネットワークを一意に識別するための値です。
 同じ秘密鍵をもつ他のネットワークに使いまわされないようにそのネットワーク個別のハッシュ値を織り交ぜて署名済みトランザクションを作成します。
@@ -185,7 +186,7 @@ Symbolではノードの応答速度を極限に高めるため、トランザ�
 Uncaught Error: {"statusCode":409,"statusMessage":"Unknown Error","body":"{\"code\":\"InvalidArgument\",\"message\":\"payload has an invalid format\"}"}
 ```
 
-## 4.4 確認
+## 確認
 
 
 ### ステータスの確認
@@ -246,9 +247,9 @@ Console.WriteLine(hash);
 ```
 
 - メインネット　
-  - https://symbol.fyi/transactions/661360E61C37E156B0BE18E52C9F3ED1022DCE846A4609D72DF9FA8A5B667747
+  - [https://symbol.fyi/transactions/661360E61C37E156B0BE18E52C9F3ED 1022DCE846A4609D72DF9FA8A5B667747](https://symbol.fyi/transactions/661360E61C37E156B0BE18E52C9F3ED1022DCE846A4609D72DF9FA8A5B667747)
 - テストネット　
-  - https://testnet.symbol.fyi/transactions/661360E61C37E156B0BE18E52C9F3ED1022DCE846A4609D72DF9FA8A5B667747
+  - [https://testnet.symbol.fyi/transactions/661360E61C37E156B0BE18E 52C9F3ED1022DCE846A4609D72DF9FA8A5B667747](https://testnet.symbol.fyi/transactions/661360E61C37E156B0BE18E52C9F3ED1022DCE846A4609D72DF9FA8A5B667747)
 
 #### REST APIで確認
 
@@ -295,11 +296,10 @@ Signature: 3C2E15F2BAED8780A454737B168515422158378355EC6946C82A1178DE7D8BF12FC68
 ブロックが承認された後、数ブロックの承認が進むと、ロールバックの発生する確率は減少していきます。
 また、Votingノードの投票で実施されるファイナライズブロックを待つことで、記録されたデータは確実なものとなります。
 
-## 4.5トランザクション履歴
+## トランザクション履歴
 
-Aliceが送受信したトランザクション履歴を一覧で取得します。
-
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Transaction-routes/operation/searchConfirmedTransactions
+Aliceが送受信したトランザクション履歴を一覧で取得します。  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Transaction-routes/operation/searchConfirmedTransactions](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Transaction-routes/operation/searchConfirmedTransactions)
 
 以下のように取得します。例では最初のトランザクションのハッシュを出力していますがご自身の必要な情報に合わせてください。
 ```cs
@@ -346,7 +346,7 @@ TransactionTypeは以下の通りです。
 {0: 'RESERVED', 16705: 'AGGREGATE_COMPLETE', 16707: 'VOTING_KEY_LINK', 16708: 'ACCOUNT_METADATA', 16712: 'HASH_LOCK', 16716: 'ACCOUNT_KEY_LINK', 16717: 'MOSAIC_DEFINITION', 16718: 'NAMESPACE_REGISTRATION', 16720: 'ACCOUNT_ADDRESS_RESTRICTION', 16721: 'MOSAIC_GLOBAL_RESTRICTION', 16722: 'SECRET_LOCK', 16724: 'TRANSFER', 16725: 'MULTISIG_ACCOUNT_MODIFICATION', 16961: 'AGGREGATE_BONDED', 16963: 'VRF_KEY_LINK', 16964: 'MOSAIC_METADATA', 16972: 'NODE_KEY_LINK', 16973: 'MOSAIC_SUPPLY_CHANGE', 16974: 'ADDRESS_ALIAS', 16976: 'ACCOUNT_MOSAIC_RESTRICTION', 16977: 'MOSAIC_ADDRESS_RESTRICTION', 16978: 'SECRET_PROOF', 17220: 'NAMESPACE_METADATA', 17229: 'MOSAIC_SUPPLY_REVOCATION', 17230: 'MOSAIC_ALIAS', 17232: 'ACCOUNT_OPERATION_RESTRICTION'
 ```
 
-## 4.6 アグリゲートトランザクション
+## アグリゲートトランザクション
 
 Symbolでは複数のトランザクションを1ブロックにまとめてアナウンスすることができます。
 最大で100件のトランザクションをまとめることができます（連署者が異なる場合は25アカウントまでを連署指定可能）。
@@ -404,7 +404,7 @@ Console.WriteLine(result);
 これはSymbolブロックチェーンでトランザクションを扱ううえで最も重要な概念になります。
 なお、本章で扱うトランザクションは同じAliceですので、アグリゲートボンデッドトランザクションへの署名もAliceを指定します。
 
-## 4.7 現場で使えるヒント
+## 現場で使えるヒント
 
 ### 存在証明
 

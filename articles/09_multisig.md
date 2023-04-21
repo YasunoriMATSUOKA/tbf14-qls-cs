@@ -1,4 +1,4 @@
-# 9.マルチシグ化
+# マルチシグ化
 アカウントのマルチシグ化について説明します。
 
 
@@ -9,7 +9,7 @@
 マルチシグは最大3階層まで構成できます。
 本書では1階層のマルチシグのみ解説します。
 
-## 9.0 アカウントの準備
+### アカウントの準備
 この章のサンプルソースコードで使用するアカウントを作成し、それぞれの秘密鍵を出力しておきます。
 本章でマルチシグ化したアカウントBobは、Carolの秘密鍵を紛失すると使えなくなってしまうのでご注意ください。
 ※本章のBobはマルチシグ化するため新たに作成することをおすすめします。
@@ -48,7 +48,7 @@ Console.WriteLine($"https://testnet.symbol.tools/?recipient={bobAddress}&amount=
 Console.WriteLine($"https://testnet.symbol.tools/?recipient={carol1Address}&amount=20");
 ```
 
-## 9.1 マルチシグの登録
+## マルチシグの登録
 
 Symbolではマルチシグアカウントを新規に作成するのではなく、既存アカウントについて連署者を指定してマルチシグ化します。
 マルチシグ化には連署者に指定されたアカウントの承諾署名(オプトイン)が必要なため、アグリゲートトランザクションを使用します。
@@ -119,11 +119,10 @@ var result = await Announce(payload);
 Console.WriteLine(result);
 ```
 
-## 9.2 確認
+## 確認
 
-### マルチシグ化したアカウントの確認
-
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Multisig-routes/operation/getAccountMultisig
+### マルチシグ化したアカウントの確認  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Multisig-routes/operation/getAccountMultisig](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Multisig-routes/operation/getAccountMultisig)
 
 ```cs
 var multisigAccountInfo = JsonNode.Parse(await GetDataFromApi(node, $"/account/{bobAddress}/multisig"));
@@ -175,7 +174,7 @@ Console.WriteLine($"MultisigAccountInfo: {multisigAccountInfo}");
 
 multisigAddresses に対して連署する権利を持っていることが分かります。
 
-## 9.3 マルチシグ署名
+## マルチシグ署名
 
 マルチシグ化したアカウントからモザイクを送信します。
 
@@ -314,7 +313,7 @@ var result = await AnnounceBonded(payload);
 連署をサポートするウォレットで承認することもできます。
 
 
-## 9.4 マルチシグ送信の確認
+## マルチシグ送信の確認
 
 マルチシグで行った送信トランザクションの結果を確認してみます。
 
@@ -391,20 +390,20 @@ Console.WriteLine($"TxInfo: {txInfo}");
 - マルチシグアカウント
     - Bob
         - transaction.transactions[0].transaction.signerPublicKey
-            - 3120B9824211E91C596C98B4FA46E129FE26B2EAD259C5D4C90C41836D18E984
+            - 3120B9824211E91C596C98B4FA46E129FE26B2EAD259C5D4C90 C41836D18E984
 - 起案者アカウント
     - Carol1
         - transaction.signerPublicKey
-            - 414CDBF3CAAE880CFD095E0AD8A87B56383C63BA4FDFC6980CFE9E4D82EFE121
+            - 414CDBF3CAAE880CFD095E0AD8A87B56383C63BA4FDFC6980CF E9E4D82EFE121
 - 連署者アカウント
     - Carol2
         - transaction.cosignatures[0].signerPublicKey
-            - 561AA3785DB0545F375A8315C1F7F785FE2445D06FE6B83AC5D13B70E3CE5A4B
+            - 561AA3785DB0545F375A8315C1F7F785FE2445D06FE6B83AC5D 13B70E3CE5A4B
     - Carol3
         - transaction.cosignatures[1].signerPublicKey
-            - 9025491143901E01CCE5C841E9883FC1C0DB00711CA56E9CD45BF2371E9E19D3
+            - 9025491143901E01CCE5C841E9883FC1C0DB00711CA56E9CD45 BF2371E9E19D3
 
-## 9.5 マルチシグ構成変更
+## マルチシグ構成変更
 
 ### マルチシグ構成の縮小
 
@@ -519,7 +518,7 @@ var result = await Announce(payload);
 Console.WriteLine(result);
 ```
 
-## 9.6 現場で使えるヒント
+## 現場で使えるヒント
 
 ### 多要素認証
 

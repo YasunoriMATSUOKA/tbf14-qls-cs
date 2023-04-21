@@ -1,16 +1,15 @@
-# 6.ネームスペース
+# ネームスペース
 
 Symbolブロックチェーンではネームスペースをレンタルしてアドレスやモザイクに視認性の高い単語をリンクさせることができます。
 ネームスペースは最大64文字、利用可能な文字は a, b, c, …, z, 0, 1, 2, …, 9, _ , - です。
 
-## 6.1 手数料の計算
+## 手数料の計算
 
 ネームスペースのレンタルにはネットワーク手数料とは別にレンタル手数料が発生します。
 ネットワークの活性度に比例して価格が変動しますので、取得前に確認するようにしてください。
 
-ルートネームスペースを365日レンタルする場合の手数料を計算します。
-
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Network-routes/operation/getRentalFees
+ルートネームスペースを365日レンタルする場合の手数料を計算します。  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Network-routes/operation/getRentalFees](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Network-routes/operation/getRentalFees)
 
 ```cs
 var rentalFees = JsonNode.Parse(await GetDataFromApi(node, $"/network/fees/rental"));
@@ -43,7 +42,7 @@ Console.WriteLine($"childNamespaceRentalFee: {childNamespaceRentalFee}");
 
 サブネームスペースに期間指定はありません。ルートネームスペースをレンタルしている限り使用できます。
 
-## 6.2 レンタル
+## レンタル
 
 ルートネームスペースをレンタルします(例:xembook)
 ```cs
@@ -116,14 +115,14 @@ var subNamespaceTx = new NamespaceRegistrationTransactionV1()
 
 レンタル済みルートネームスペースの有効期限を計算します。
 
-namespace<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Namespace-routes/operation/getNamespace
+namespace  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Namespace-routes/operation/getNamespace](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Namespace-routes/operation/getNamespace)
 
-chain<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Chain-routes/operation/getChainInfo
+chain  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Chain-routes/operation/getChainInfo](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Chain-routes/operation/getChainInfo)
 
-block<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Block-routes
+block  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Block-routes](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Block-routes)
 
 ```cs
 var namespaceInfo = JsonNode.Parse(await GetDataFromApi(node, $"/namespaces/{namespaceId:X16}"));
@@ -152,7 +151,7 @@ Console.WriteLine(endDate.ToString("yyyy/MM/dd HH:mm:ss", CultureInfo.InvariantC
 ```cs
 > 2023/05/12 13:33:43
 ```
-## 6.3 リンク
+## リンク
 
 ### アカウントへのリンク
 ```cs
@@ -206,7 +205,7 @@ Console.WriteLine(result);
 ※この時、MosaicIdの引数はulong型になります。
 そのため`Convert.ToUInt64("5E033AC6CE11E654", 16);`のように16進数文字列をulong型にコンバートするか`0x5E033AC6CE11E654`のように指定してください。
 
-## 6.4 未解決で使用
+## 未解決で使用
 
 送信先にUnresolvedAccountとして指定して、アドレスを特定しないままトランザクションを署名・アナウンスします。
 チェーン側で解決されたアカウントに対しての送信が実施されます。
@@ -254,7 +253,7 @@ namespaceIdはulongですが、以下のように16進数文字列に変換す�
 namespaceId.ToString("X8")
 ```
 
-## 6.5 参照
+## 参照
 
 アドレスへリンクしたネームスペースの参照します
 ```cs
@@ -332,8 +331,8 @@ NamespaceInfo: {
 
 ### 逆引き
 
-アドレスに紐づけられたネームスペースを全て調べます。<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Namespace-routes/operation/getAccountsNames
+アドレスに紐づけられたネームスペースを全て調べます。  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Namespace-routes/operation/getAccountsNames](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Namespace-routes/operation/getAccountsNames)
 
 ```cs
 var obj = new Dictionary<string, string[]>()
@@ -353,8 +352,9 @@ foreach (var name in (IEnumerable)namespaceInfo["accountNames"][0]["names"])
 }
 ```
 
-モザイクに紐づけられたネームスペースを全て調べます。<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Namespace-routes/operation/getMosaicsNames
+モザイクに紐づけられたネームスペースを全て調べます。  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Namespace-routes/operation/getMosaicsNames](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Namespace-routes/operation/getMosaicsNames)
+
 ```cs
 var obj = new Dictionary<string, string[]>()
 {
@@ -378,8 +378,8 @@ foreach (var name in (IEnumerable)namespaceInfo["mosaicNames"][0]["names"])
 
 トランザクションに使用されたネームスペースをブロックチェーン側がどう解決したかを確認します。<br>
 
-#### アドレス
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Receipt-routes/operation/searchAddressResolutionStatements
+#### アドレス  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Receipt-routes/operation/searchAddressResolutionStatements](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Receipt-routes/operation/searchAddressResolutionStatements)
 
 ```cs
 var state = JsonNode.Parse(await GetDataFromApi(node, $"/statements/resolutions/address?height=373690"));
@@ -416,8 +416,8 @@ Console.WriteLine(state);
 }
 ```
 
-#### モザイク
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Receipt-routes/operation/searchMosaicResolutionStatements
+#### モザイク  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Receipt-routes/operation/searchMosaicResolutionStatements](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Receipt-routes/operation/searchMosaicResolutionStatements)
 
 ```cs
 var state = JsonNode.Parse(await GetDataFromApi(node, $"/statements/resolutions/mosaic?height=373694"));

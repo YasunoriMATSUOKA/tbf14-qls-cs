@@ -1,23 +1,28 @@
-# 2.環境構築
+# 環境構築
 
 本書の読み進め方について解説します。
 
-## 2.1 使用言語
+## 使用言語
 
 C#を使用します。
 
 ### SDK
+
 symbol_cs_dual_sdk
+
 https://github.com/0x070696E65/symbol_cs_dual_sdk/releases
  
 ### リファレンス
+
 Symbol SDK for TypeScript and JavaScript  
+
 https://0x070696e65.github.io/symbol_cs_dual_sdk_reference/
 
 Catapult REST Endpoints (1.0.3)  
+
 https://symbol.github.io/symbol-openapi/v1.0.3/
 
-## 2.2 サンプルソースコード
+## サンプルソースコード
 
 ### 出力値確認
 Console.WriteLine()を変数の内容を出力します。状況（Unityの場合はDebug.Log等）に応じた出力関数に読み替えてお試しください。
@@ -35,7 +40,7 @@ Aliceとの送受信用のアカウントとして各章で必要に応じて作
 本書で紹介するトランザクションの手数料乗数は100でトランザクションを作成します。
 
 
-## 2.3 事前準備
+## 事前準備
 SDKをダウンロードしDllファイルを使用するプロジェクトの参照に追加してください。
 
 ノード一覧より任意のノードを選択しノードURLを保存しておいてください。本書ではテストネットを前提として解説しています。

@@ -1,4 +1,4 @@
-# 11.制限
+# 制限
 
 アカウントに対する制限とモザイクのグローバル制限についての方法を紹介します。
 本章では、既存アカウントの権限を制限してしまうので、使い捨てのアカウントを新規に作成してお試しください。
@@ -14,7 +14,7 @@ Console.WriteLine(carolAddress);
 //FAUCET URL出力
 Console.WriteLine("https://testnet.symbol.tools/?recipient=" + carolAddress +"&amount=100");
 ```
-## 11.1 アカウント制限
+## アカウント制限
 
 ### 指定アドレスからの受信制限・指定アドレスへの送信制限
 ```cs
@@ -151,8 +151,8 @@ BlockOutgoingTransactionTypeを指定する場合は、ACCOUNT_OPERATION_RESTRIC
 
 ### 確認
 
-設定した制限情報を確認します<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Restriction-Account-routes/operation/getAccountRestrictions
+設定した制限情報を確認します  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Restriction-Account-routes/operation/getAccountRestrictions](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Restriction-Account-routes/operation/getAccountRestrictions)
 
 ```cs
 var restrictionsinfo = JsonNode.Parse(await GetDataFromApi(node, $"/restrictions/account/{carolAddress}"));
@@ -189,7 +189,7 @@ Console.WriteLine($"AccountRestrictions: {restrictionsinfo}");
 
 ```
 
-## 11.2 グローバルモザイク制限
+## グローバルモザイク制限
 
 グローバルモザイク制限はモザイクに対して送信可能な条件を設定します。  
 その後、各アカウントに対してグローバルモザイク制限専用の数値メタデータを付与します。  
@@ -337,8 +337,8 @@ Console.WriteLine(result2);
 
 ### 制限状態確認
 
-ノードに問い合わせて制限状態を確認します。<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Restriction-Mosaic-routes/operation/searchMosaicRestrictions
+ノードに問い合わせて制限状態を確認します。  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Restriction-Mosaic-routes/operation/searchMosaicRestrictions](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Restriction-Mosaic-routes/operation/searchMosaicRestrictions)
 
 ```cs
 var mosaicRestrictionsInfo = JsonNode.Parse(await GetDataFromApi(node, $"/restrictions/mosaic?mosaicId=388F6F55BE55BB6E"));
@@ -446,7 +446,7 @@ Console.WriteLine(result);
 {"hash":"E3402FB7AE21A6A64838DDD0722420EC67E61206C148A73B0DFD7F8C098062FA","code":"Failure_RestrictionMosaic_Account_Unauthorized","deadline":"12371602742","group":"failed"}
 ```
 
-## 11.3 現場で使えるヒント
+## 現場で使えるヒント
 
 ブロックチェーンの社会実装などを考えたときに、法律や信頼性の見地から
 一つの役割のみを持たせたいアカウント、関係ないアカウントを巻き込みたくないと思うことがあります。

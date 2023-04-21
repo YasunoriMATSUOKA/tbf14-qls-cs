@@ -1,11 +1,11 @@
-# 5.モザイク
+# モザイク
 
 本章ではモザイクの設定とその生成方法について解説します。
 Symbolではトークンのことをモザイクと表現します。
 
 > Wikipediaによると、トークンとは「紀元前8000年頃から紀元前3000年までのメソポタミアの地層から出土する直径が1cm前後の粘土で作られたさまざまな形状の物体」のことを指します。一方でモザイクとは「小片を寄せあわせ埋め込んで、絵（図像）や模様を表す装飾美術の技法。石、陶磁器（モザイクタイル）、有色無色のガラス、貝殻、木などが使用され、建築物の床や壁面、あるいは工芸品の装飾のために施される。」とあります。SymbolにおいてモザイクとはSymbolが作りなすエコシステムの様相を表すさまざまな構成要素、と考えることができます。
 
-## 5.1 モザイク生成
+## モザイク生成
 
 モザイク生成には
 作成するモザイクを定義します。
@@ -43,8 +43,7 @@ MosaicFlags {
 
 #### divisibility:可分性
 
-可分性は小数点第何位まで数量の単位とするかを決めます。データは整数値として保持されます。
-
+可分性は小数点第何位まで数量の単位とするかを決めます。データは整数値として保持されます。  
 divisibility:0 = 1  
 divisibility:1 = 1.0  
 divisibility:2 = 1.00  
@@ -105,9 +104,8 @@ Console.WriteLine(result);
 配列化した時に、矛盾点がなければ1つのブロック内で問題なく処理することができます。
 
 ### 確認
-作成したモザイク情報を確認します。
-
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Mosaic-routes/operation/getMosaic
+作成したモザイク情報を確認します。  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Mosaic-routes/operation/getMosaic](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Mosaic-routes/operation/getMosaic)
 
 ```cs
 var mosaic = JsonNode.Parse( await GetDataFromApi(node, $"/mosaics/{mosaicId:X8}"));
@@ -131,7 +129,7 @@ Console.WriteLine($"Mosaic: {mosaic}");
 }
 ```
 
-## 5.2 モザイク送信
+## モザイク送信
 
 作成したモザイクを送信します。
 よく、ブロックチェーンに初めて触れる方は、
@@ -227,7 +225,7 @@ Console.WriteLine($"Transaction: {transaction}");
 ```
 TransferTransactionのmosaicsに2種類のモザイクが送信されていることが確認できます。また、承認されたブロックの情報が記載されています。
 
-## 5.3 現場で使えるヒント
+## 現場で使えるヒント
 
 ### 所有証明
 

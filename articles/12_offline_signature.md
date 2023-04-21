@@ -1,17 +1,17 @@
-# 12.オフライン署名
+# オフライン署名
 
 ロック機構の章で、アナウンスしたトランザクションをハッシュ値指定でロックして、  
 複数の署名（オンライン署名）を集めるアグリゲートトランザクションを紹介しました。    
 この章では、トランザクションを事前に署名を集めてノードにアナウンスするオフライン署名について説明します。  
 
-## 手順
+### 手順
 
 Aliceが起案者となりトランザクションを作成し、署名します。  
 次にBobが署名してAliceに返します。  
 最後にAliceがトランザクションを結合してネットワークにアナウンスします。  
 
 
-## 12.1 トランザクション作成
+## トランザクション作成
 ```cs
 var innerTx1 = new EmbeddedTransferTransactionV1()
 {
@@ -51,7 +51,7 @@ Console.WriteLine(signedPayload);
 
 署名を行い、signedPayloadを出力します。signedPayloadをBobに渡して署名を促します。  
 
-## 12.2 Bobによる連署
+## Bobによる連署
 
 
 Aliceから受け取ったsignedPayloadでトランザクションを復元します。
@@ -95,7 +95,7 @@ Console.WriteLine(Converter.BytesToHex(cosignature.Serialize()));
 hashに対して署名を行い、Cosignatureクラスの生成、シリアライズして16進数文字列で返します。
 Bobが全ての署名を揃えられる場合は、Aliceに返却しなくてもBobがアナウンスすることも可能です。
 
-## 12.3 アナウンス
+## アナウンス
 
 AliceはBobからcosignatureHexを受け取ります。
 また事前にAlice自身で作成したsignedPayloadを用意します。  
@@ -112,7 +112,7 @@ var result = await Announce(payload);
 Console.WriteLine(result);
 ```
 
-## 12.4 現場で使えるヒント
+## 現場で使えるヒント
 
 ### マーケットプレイスレス
 ボンデッドトランザクションと異なりハッシュロックのための手数料(10XYM)を気にする必要がありません。    

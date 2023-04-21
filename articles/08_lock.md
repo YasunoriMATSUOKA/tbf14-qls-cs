@@ -1,8 +1,8 @@
-# 8.ロック
+# ロック
 
 Symbolブロックチェーンにはハッシュロックとシークレットロックの２種類のロック機構があります。  
 
-## 8.1 ハッシュロック
+## ハッシュロック
 
 ハッシュロックは後でアナウンスされる予定のトランザクションを事前にハッシュ値で登録しておくことで、
 該当トランザクションがアナウンスされた場合に、そのトランザクションをAPIノード上で処理せずにロックさせて、署名が集まってから処理を行うことができます。
@@ -104,8 +104,8 @@ Console.WriteLine(result);
 
 ### アグリゲートボンデッドトランザクションのアナウンス
 
-アグリゲートボンデッドトランザクションは通常のトランザクションとはアナウンス先が異なります。以下のような関数を用意しておくと良いでしょう。<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Transaction-routes/operation/announcePartialTransaction
+アグリゲートボンデッドトランザクションは通常のトランザクションとはアナウンス先が異なります。以下のような関数を用意しておくと良いでしょう。  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Transaction-routes/operation/announcePartialTransaction](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Transaction-routes/operation/announcePartialTransaction)
 
 ```cs
 static async Task<string> AnnounceBonded(string payload)
@@ -124,8 +124,9 @@ Console.WriteLine(resultBonded);
 ```
 
 ### 連署
-ロックされたトランザクションを指定されたアカウント(Bob)で連署します。<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Transaction-routes/operation/announceCosignatureTransaction
+
+ロックされたトランザクションを指定されたアカウント(Bob)で連署します。  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Transaction-routes/operation/announceCosignatureTransaction](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Transaction-routes/operation/announceCosignatureTransaction)
 
 連署のトランザクションもアナウンス先が異なります。以下のような関数を用意しておくなど対応してください。
 
@@ -154,8 +155,8 @@ var result = await AnnounceCosignature(json);
 Console.WriteLine(result);
 ```
 
-なお、以下のように特定のアカウントに対して連署を要求するトランザクションが存在しているか確認することも可能です。<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Transaction-routes/operation/searchPartialTransactions
+なお、以下のように特定のアカウントに対して連署を要求するトランザクションが存在しているか確認することも可能です。  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Transaction-routes/operation/searchPartialTransactions](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Transaction-routes/operation/searchPartialTransactions)
 
 ```cs
 var partial = JsonNode.Parse(await GetDataFromApi(node, $"/transactions/partial?address={bobAddress}"));
@@ -167,7 +168,7 @@ Console.WriteLine(partial);
 アグリゲートトランザクションにそのアカウントがsignerとなるトランザクションを含めるようにしてください。
 モザイク送信無し＆メッセージ無しのダミートランザクションでも問題ありません（パフォーマンスに影響が出るための仕様とのことです）
 
-## 8.2 シークレットロック・シークレットプルーフ
+## シークレットロック・シークレットプルーフ
 
 シークレットロックは事前に共通パスワードを作成しておき、指定モザイクをロックします。
 受信者が有効期限内にパスワードの所有を証明することができればロックされたモザイクを受け取ることができる仕組みです。
@@ -225,8 +226,9 @@ LockHashAlgorithmは以下の通りです。
 ロック時に解除先を指定するのでBob以外のアカウントが解除しても転送先（Bob）を変更することはできません。
 ロック期間は最長で365日(ブロック数を日換算)までです。
 
-承認されたトランザクションを確認します。<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Secret-Lock-routes/operation/searchSecretLock
+承認されたトランザクションを確認します。  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Secret-Lock-routes/operation/searchSecretLock](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Secret-Lock-routes/operation/searchSecretLock)
+
 ```cs
 var secretLockInfo = JsonNode.Parse(await GetDataFromApi(node, $"/lock/secret?secret=196191F74708E2B4A52AEB643A3BA7E19655A64E7FAC6FBBA4F267BC18EDFF9E"));
 Console.WriteLine($"SecretLockInfo: {secretLockInfo}");
@@ -330,8 +332,8 @@ Console.WriteLine($"SecretProofTransaction: {transactionInfo}");
 
 SecretProofTransactionにはモザイクの受信量の情報は含まれていません。
 ブロック生成時に作成されるレシートで受信量を確認します。
-レシートタイプ:LockSecret_Completed(8786) でBob宛のレシートを検索してみます。<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Receipt-routes/operation/searchReceipts
+レシートタイプ:LockSecret_Completed(8786) でBob宛のレシートを検索してみます。  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Receipt-routes/operation/searchReceipts](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Receipt-routes/operation/searchReceipts)
 
 ```cs
 var receiptInfo = JsonNode.Parse(await GetDataFromApi(node, $"/statements/transaction?targetAddress={bobAddress}&receiptType=8786&order=desc"));
@@ -374,7 +376,7 @@ ReceiptTypeは以下の通りです。
 9042: 'LockSecret_Expired'　：ロック期限切れ
 ```
 
-## 8.3 現場で使えるヒント
+## 現場で使えるヒント
 
 
 ### 手数料代払い

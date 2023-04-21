@@ -1,11 +1,11 @@
-# 13.検証
+# 検証
 ブロックチェーン上に記録されたさまざまな情報を検証します。
 ブロックチェーンへのデータ記録は全ノードの合意を持って行われますが、
 ブロックチェーンへの**データ参照**はノード単体からの情報取得であるため、
 信用できないノードの情報を元にして新たな取引を行いたい場合は、ノードから取得したデータに対して検証を行う必要があります。
 
 
-## 13.1 トランザクションの検証
+## トランザクションの検証
 
 トランザクションがブロックヘッダーに含まれていることを検証します。この検証が成功すれば、トランザクションがブロックチェーンの合意によって承認されたものとみなすことができます。
 
@@ -77,10 +77,9 @@ Console.WriteLine(Converter.BytesToHex(merkleComponentHash));
 
 ### InBlockの検証
 
-ノードからマークルツリーを取得し、先ほど計算したmerkleComponentHashからブロックヘッダーのマークルルートが導出できることを確認します。<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Block-routes/operation/getBlockByHeight
-
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Block-routes/operation/getMerkleTransaction
+ノードからマークルツリーを取得し、先ほど計算したmerkleComponentHashからブロックヘッダーのマークルルートが導出できることを確認します。  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Block-routes/operation/getBlockByHeight](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Block-routes/operation/getBlockByHeight)  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Block-routes/operation/getMerkleTransaction](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Block-routes/operation/getMerkleTransaction)
 
 ```cs
 static string ComputeHash(string input)
@@ -123,7 +122,7 @@ Console.WriteLine(result);
 
 トランザクションの情報がブロックヘッダーに含まれていることが確認できました。
 
-## 13.2 ブロックヘッダーの検証
+## ブロックヘッダーの検証
 
 既知のブロックハッシュ値（例：ファイナライズブロック）から、検証中のブロックヘッダーまでたどれることを検証します。
 
@@ -261,12 +260,12 @@ Console.WriteLine((string)blockInfo["block"]["stateHash"] == Converter.BytesToHe
 ブロックヘッダーの検証に利用した9個のstateがstateHashSubCacheMerkleRootsから構成されていることがわかります。
 
 
-## 13.3 アカウント・メタデータの検証
+## アカウント・メタデータの検証
 
 マークルパトリシアツリーを利用して、トランザクションに紐づくアカウントやメタデータの存在を検証します。  
 サービス提供者がマークルパトリシアツリーを提供すれば、利用者は自分の意志で選択したノードを使ってその真偽を検証することができます。
 
-### 検証用共通関数
+#### 検証用共通関数
 
 ```cs
 // 葉のハッシュ値取得関数
@@ -342,7 +341,7 @@ static void CheckState(JsonNode stateProof, string stateHash, string pathHash, s
 }
 ```
 
-### 13.3.1 アカウント情報の検証
+### アカウント情報の検証
 
 アカウント情報を葉として、
 マークルツリー上の分岐する枝をアドレスでたどり、
@@ -353,7 +352,7 @@ static void CheckState(JsonNode stateProof, string stateHash, string pathHash, s
 https://github.com/xembook/quick_learning_symbol/blob/main/13_verify.md#1331-%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E6%83%85%E5%A0%B1%E3%81%AE%E6%A4%9C%E8%A8%BC
 
 
-### 13.3.2 モザイクへ登録したメタデータの検証
+### モザイクへ登録したメタデータの検証
 
 モザイクに登録したメタデータValue値を葉として、
 マークルツリー上の分岐する枝をメタデータキーで構成されるハッシュ値でたどり、
@@ -404,7 +403,7 @@ var stateProof = JsonNode.Parse(await GetDataFromApi(node, $"/metadata/{Converte
 CheckState(stateProof, Converter.BytesToHex(stateHash), Converter.BytesToHex(pathHash), (string)rootHash);
 ```
 
-### 13.3.3 アカウントへ登録したメタデータの検証
+### アカウントへ登録したメタデータの検証
 
 アカウントに登録したメタデータValue値を葉として、
 マークルツリー上の分岐する枝をメタデータキーで構成されるハッシュ値でたどり、
@@ -455,7 +454,7 @@ var stateProof = JsonNode.Parse(await GetDataFromApi(node, $"/metadata/{Converte
 CheckState(stateProof, Converter.BytesToHex(stateHash), Converter.BytesToHex(pathHash), (string)rootHash);
 ```
 
-## 13.4 現場で使えるヒント
+## 現場で使えるヒント
 
 ### トラステッドウェブ
 

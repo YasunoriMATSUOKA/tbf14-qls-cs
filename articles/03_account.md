@@ -1,8 +1,8 @@
-# 3.キーペア
+# キーペア
 
 キーペアは秘密鍵と公開鍵のペアで公開鍵を定められた形式でコンバートした物がアドレスとなります。秘密鍵を使って署名することでのみブロックチェーンのデータを更新することができます。  
 
-## 3.1 キーペア生成
+## キーペア生成
 まずはキーペアを作成します。
 
 ### 新規生成
@@ -43,7 +43,7 @@ var alicePrivateKey = new PrivateKey("14311B7BEC946A28AD845FA8B565B90F52B6E0562F
 var aliceKeyPair = new KeyPair(alicePrivateKey);
 ```
 
-## 3.2 アカウントへの送信
+## アカウントへの送信
 
 アカウントを作成しただけでは、ブロックチェーンにデータを送信することはできません。  
 パブリックブロックチェーンはリソースを有効活用するためにデータ送信時に手数料を要求します。  
@@ -56,10 +56,12 @@ Symbolブロックチェーンでは、この手数料をXYMという共通ト�
 メインネットの場合は取引所などでXYMを購入するか、投げ銭サービス(NEMLOG,QUEST)などを利用して寄付を募りましょう。  
 
 テストネット
+
 - FAUCET(蛇口)
   - https://testnet.symbol.tools/
 
 メインネット
+
 - NEMLOG
   - https://nemlog.nem.social/
 - QUEST
@@ -76,7 +78,7 @@ Symbolブロックチェーンでは、この手数料をXYMという共通ト�
 - メインネット
   - https://symbol.fyi/
 
-## 3.3 アカウント情報の確認
+## アカウント情報の確認
 
 ノードに保存されているアカウント情報を取得します。
 
@@ -128,8 +130,8 @@ static async Task<string> PostDataFromApi(string _node, string _param, object _o
 
 取得できるデータは文字列で返ってくるので、取得したい情報に関するクラスを事前に作成する必要があります。
 
-今回はアカウントが所有するモザイク一覧を取得するため以下エンドポイントを叩きます。<br>
-https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Account-routes/operation/getAccountInfo
+今回はアカウントが所有するモザイク一覧を取得するため以下エンドポイントを叩きます。  
+[https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Account-routes/operation/getAccountInfo](https://symbol.github.io/symbol-openapi/v1.0.3/#tag/Account-routes/operation/getAccountInfo)
 
 ここのレスポンスの箇所に合わせてクラスを作成します。
 ※以下ではJsonをデシリアライズするためのクラスを作成しますが、本書ではこれ以降はAPIから取得するJSONを`System.Text.Json.Nodes.JsonNode.Parse()`によってデシリアライズします。
@@ -214,7 +216,7 @@ foreach (var mosaic in account.account.mosaics)
 > 00EC51045EECD5EB : 1
 > 173AC1E38CBAD11D : 499999997
 ```
-## 3.4 現場で使えるヒント
+## 現場で使えるヒント
 ### 暗号化と署名
 
 アカウントとして生成した秘密鍵や公開鍵は、そのまま従来の暗号化や電子署名として活用することができます。信頼性に問題点があるアプリケーションを使用する必要がある場合も、個人間（エンドツーエンド）でデータの秘匿性・正当性を検証することができます。  

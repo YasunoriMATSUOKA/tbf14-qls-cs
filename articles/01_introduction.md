@@ -1,7 +1,6 @@
-### 今日から現場で使える
-# 速習Symbolブロックチェーン for C#
+# 今日から現場で使える速習Symbolブロックチェーン for C\#
 
-# はじめに
+## はじめに
 
 本ドキュメントは以下のオリジナル版をC#に合わせて主にコード箇所を改変したものです。<br>
 https://github.com/xembook/quick_learning_symbol<br>
