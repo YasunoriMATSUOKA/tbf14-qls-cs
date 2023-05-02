@@ -349,7 +349,7 @@ static void CheckState(JsonNode stateProof, string stateHash, string pathHash, s
 
 ※本項はC#SDKにAccountInfoをシリアライズする関数がまだあらず、時間を要するので現時点ではオリジナル版にて学習してください。
 
-https://github.com/xembook/quick_learning_symbol/blob/main/13_verify.md#1331-%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E6%83%85%E5%A0%B1%E3%81%AE%E6%A4%9C%E8%A8%BC
+https://github.com/xembook/quick_learning_symbol/blob/main/13_verify.md
 
 
 ### モザイクへ登録したメタデータの検証
