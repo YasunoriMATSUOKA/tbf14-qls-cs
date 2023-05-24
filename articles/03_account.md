@@ -266,7 +266,7 @@ Aliceの秘密鍵でメッセージを署名し、Aliceの公開鍵と署名で�
 
 ```cs
 const string message = "Hello Symol!";
-var sig = aliceKeyPair.Sign(message);
+var sig = aliceKeyPair.Sign(Converter.Utf8ToBytes(message));
 Console.WriteLine($"Signature: {sig}");
 ```
 ```cs
